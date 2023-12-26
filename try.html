@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fingerprint Verification</title>
+    <style>
+        body {
+            background-image: url("/images/loginbg.jpg");
+            background-size: cover;
+        }
+        form {
+            width: 400px;
+            height: auto;
+            margin: auto;
+            margin-top: 100px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* slightly transparent white */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            opacity: 0.8; /* adjust this value to change the opacity */
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: inherit;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return authenticateFingerprint()">
+        <h2>Fingerprint Verification</h2>
+        <input type="submit" value="Verify with Fingerprint">
+    </form>
+
+    <script>
+        async function authenticateFingerprint() {
+            try {
+                // Check if WebAuthn is supported.
+                if (!window.PublicKeyCredential) {
+                    alert("Fingerprint authentication is not supported in this browser.");
+                    return false;
+                }
+
+                // Request fingerprint authentication.
+                const credentials = await navigator.credentials.create({
+                    publicKey: {
+                        // Add relevant options for fingerprint verification.
+                    },
+                });
+
+                // Handle the result of the fingerprint verification here.
+                alert("Fingerprint verification successful!");
+                // You can proceed with two-step verification logic here.
+
+                return false; // Prevent the form from submitting normally.
+            } catch (error) {
+                alert("Fingerprint verification failed. Please try again.");
+                return false; // Prevent the form from submitting normally.
+            }
+        }
+    </script>
+</body>
+</html>

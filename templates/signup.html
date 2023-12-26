@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-image:url("/images/loginbg.jpg");
+            background-size: cover;
+        }
+        form {
+            width: 400px;
+            height: auto;
+            margin: auto;
+            margin-top: 100px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* slightly transparent white */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            text-align: center;
+            opacity: 0.9; /* adjust this value to change the opacity */
+        }
+        input[type="text"], input[type="password"], input[type="date"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: inherit;
+        }
+        p {
+            color: #888;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        a {
+            color: #2488FF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <h2>Sign Up Form</h2>
+        <input type="text" placeholder="Name" id="name" required>
+        <input type="date" placeholder="Date of Birth" id="dob" required>
+        <input type="email" placeholder="Email" id="email" required>
+        <input type="password" placeholder="Password" id="password" minlength="8" required>
+        <input type="tel" placeholder="Mobile Number" id="mobile" required>
+        <input type="submit" value="Sign Up">
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </form>
+
+    <script>
+        function validate() {
+            var name = document.getElementById("name").value;
+            var dob = document.getElementById("dob").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var mobile = document.getElementById("mobile").value;
+
+            if (!name || !dob || !email || !password || !mobile) {
+                alert("Please fill in all the required fields.");
+                return false;
+            }
+
+            if (password.length < 8) {
+                alert("Password should be at least 8 characters long.");
+                return false;
+            }
+
+            window.location.href = "otp.html";
+            return false;
+        }
+    </script>
+</body>
+</html>
