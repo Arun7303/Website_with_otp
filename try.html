@@ -1,68 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Fingerprint Verification</title>
+    <title>Thank You</title>
     <style>
         body {
             background-image: url("/images/loginbg.jpg");
             background-size: cover;
+            color: #fff;
         }
-        form {
+
+        .thankyou-container {
             width: 400px;
             height: auto;
             margin: auto;
             margin-top: 100px;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* slightly transparent white */
+            background-color: rgba(79, 79, 79, 0.8); /* slightly transparent white */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             text-align: center;
-            opacity: 0.8; /* adjust this value to change the opacity */
+            opacity: 0.9; /* adjust this value to change the opacity */
         }
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: inherit;
+
+        h2 {
+            color: #fff; /* change heading color to white */
+        }
+
+        p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #2488FF;
+            text-decoration: none;
         }
     </style>
 </head>
+
 <body>
-    <form onsubmit="return authenticateFingerprint()">
-        <h2>Fingerprint Verification</h2>
-        <input type="submit" value="Verify with Fingerprint">
-    </form>
-
-    <script>
-        async function authenticateFingerprint() {
-            try {
-                // Check if WebAuthn is supported.
-                if (!window.PublicKeyCredential) {
-                    alert("Fingerprint authentication is not supported in this browser.");
-                    return false;
-                }
-
-                // Request fingerprint authentication.
-                const credentials = await navigator.credentials.create({
-                    publicKey: {
-                        // Add relevant options for fingerprint verification.
-                    },
-                });
-
-                // Handle the result of the fingerprint verification here.
-                alert("Fingerprint verification successful!");
-                // You can proceed with two-step verification logic here.
-
-                return false; // Prevent the form from submitting normally.
-            } catch (error) {
-                alert("Fingerprint verification failed. Please try again.");
-                return false; // Prevent the form from submitting normally.
-            }
-        }
-    </script>
+    <div class="thankyou-container">
+        <h2>Thank You for Visiting Our Website</h2>
+        <p>We appreciate your time and interest. If you have any questions or feedback, feel free to <a
+                href="contact.html">contact us</a>.</p>
+        <p>Explore more about our services and features. <a href="home.html">Go to Home</a></p>
+    </div>
 </body>
+
 </html>
